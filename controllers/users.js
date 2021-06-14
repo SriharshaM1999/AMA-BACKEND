@@ -8,7 +8,7 @@ module.exports.home = function(req, res){
 module.exports.signUp = async function(req, res){
 
 
-    console.log(req.query);
+   // console.log(req.query);
 
 
     try{
