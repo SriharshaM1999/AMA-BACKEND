@@ -1,4 +1,4 @@
-const User = require("../../../model/Users")
+const User = require("../../../../model/Users")
 
 const jwt = require("jsonwebtoken");
 
@@ -7,11 +7,14 @@ module.exports.createSession= async function(req,res){
 
  try{
 
-    console.log(req.body);
+     const email=req.query.email;
+     const password=req.query.password;
 
-    let user = await User.findOne({email:req.body.email});
+    console.log(req.query);
+
+    let user = await User.findOne({email:email});
  
-    if(!user || user.password!= req.body.password){
+    if(!user || user.password!= password){
         return res.json(422,{
             message:"Invalid user name or password"
         })
@@ -20,7 +23,7 @@ module.exports.createSession= async function(req,res){
     return res.json(200,{
         message:" Successfully logged in here is your token",
         data:{
-            token:jwt.sign(user.toJSON(),'secret',{expiresIn:'100000'})
+            token:jwt.sign(user.toJSON(),'secret',{expiresIn:'10000000'})
         }
     })
 
@@ -32,7 +35,7 @@ module.exports.createSession= async function(req,res){
  catch(err){
      console.log(err);
      return res.json(500,{
-        message:"Internal Server Erro"
+        message:"Internal Server Erroor"
     })
  }
 

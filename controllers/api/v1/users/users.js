@@ -1,4 +1,4 @@
-const User = require("../../../model/Users")
+const User = require("../../../../model/Users")
 
 
 
@@ -7,12 +7,17 @@ module.exports.signUp = async function(req, res){
 
 
     console.log("req received is : ");
-    console.log(req);
+    console.log(req.query);
+
+    const email = req.query.email;
+    const password=req.query.password;
+    const username=req.query.username
+
  
 
     try{
 
-        let users =  await User.findOne({email:req.body.email});
+        let users =  await User.findOne({email:email});
 
         if(users){
             console.log("user is present");
@@ -27,9 +32,11 @@ module.exports.signUp = async function(req, res){
 
 
             await User.create({
-                username: req.body.username,
-                email: req.body.email,
-                password: req.body.password
+                username: username,
+                email: email,
+                password: password,
+                noOfQuestions:0,
+                noOfAnswers:0
             },function(err){
             
                  if(err){

@@ -18,6 +18,13 @@ email:{
 password:{
     type:String,
     required:true
+},
+noOfQuestions:{
+    type:Number,
+    
+},
+noOfAnswers:{
+    type:Number
 }
 
 },{
