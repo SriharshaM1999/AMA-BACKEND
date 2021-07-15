@@ -1,4 +1,6 @@
-const User = require("../../../../model/Users")
+const User = require("../../../../model/Users");
+
+
 
 
 
@@ -7,11 +9,11 @@ module.exports.signUp = async function(req, res){
 
 
     console.log("req received is : ");
-    console.log(req.query);
+    console.log(req.body);
 
-    const email = req.query.email;
-    const password=req.query.password;
-    const username=req.query.username
+    const email = req.body.email;
+    const password=req.body.password;
+    const username=req.body.username
 
  
 

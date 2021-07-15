@@ -9,13 +9,21 @@ const QuestionSchema = mongoose.Schema({
 
     user:{
         type:mongoose.Schema.Types.ObjectId,
+        ref:'User',
         required: true
     },
 
     tagname:{
         type:String,
         required:true,
-    }
+    },
+
+    answer:[
+        {
+            type:mongoose.Schema.Types.ObjectId,
+            ref:'Answer'
+        }
+    ]
     
 },{
     timestamps:true
