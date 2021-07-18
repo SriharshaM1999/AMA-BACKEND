@@ -47,7 +47,15 @@ app.use(express.json());
 // });
 
 
-app.use('/', router);
+//app.use('/', router);
+
+Router.get('/', function (req, res) {
+    return res.status(200).json({
+      message: 'page not found',
+      success: false,
+    });
+  });
+
 
 
 app.listen(port, function(err){
