@@ -7,7 +7,7 @@ const passport = require('passport');
 const passportJwt= require('./config/passport-jwt-strategy');
 
 
-const port =8000;
+const port = process.env.PORT || 8000;
 
 
 
@@ -26,9 +26,10 @@ app.use(express.urlencoded());
 app.use(express.json());
 
 
+
 app.use(function (req, res, next) {
     // Website you wish to allow to connect
-    // res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+    //res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
 
     res.setHeader('Access-Control-Allow-Origin', '*');
 
@@ -46,9 +47,18 @@ app.use(function (req, res, next) {
     next();
 });
 
-app.use(cors());
+ app.use(cors());
+
 
 app.use('/', router);
+
+// Router.get('/', function (req, res) {
+//     return res.status(200).json({
+//       message: 'page not found',
+//       success: false,
+//     });
+//   });
+
 
 
 app.listen(port, function(err){

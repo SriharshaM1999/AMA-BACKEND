@@ -9,7 +9,7 @@ const Router = express.Router();
 
 Router.post("/create-question",passport.authenticate('jwt',{session:false}),QuestionCreateController.createQuestion)
 Router.post("/delete-question",passport.authenticate('jwt',{session:false}),QuestionDeleteController.deleteQuestion)
-Router.get("/display-question",passport.authenticate('jwt',{session:false}),QuestionDisplayController.display)
+Router.get("/display-question",QuestionDisplayController.display)
 
 
 

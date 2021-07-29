@@ -1,6 +1,6 @@
 const Question = require("../../../../model/question");
 const Tag = require("../../../../model/tags");
-
+const UserData = require("../../../../model/Users")
 
 module.exports.createQuestion= async function(req,res){
 
@@ -9,13 +9,13 @@ module.exports.createQuestion= async function(req,res){
 
             
 
-            console.log("I got called");
+            console.log("createQuestion got called");
 
 
 
-            const content = req.query.content
+            const content = req.body.content
             const user = req.user._id;
-            const tagname = req.query.tagname
+            const tagname = req.body.tagname
 
             const question  = await Question.create({
                 content:content,
@@ -23,7 +23,9 @@ module.exports.createQuestion= async function(req,res){
                 tagname: tagname
             })
 
-            
+            const User = await UserData.updateOne({_id:user},{$inc:{noOfQuestions:1}});
+
+            console.log("IN question create, user: ", User);
 
             const tag= await Tag.findOne({name:tagname});
 

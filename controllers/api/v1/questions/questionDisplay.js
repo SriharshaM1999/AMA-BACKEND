@@ -5,9 +5,16 @@ module.exports.display = async function(req, res){
 
     try{
 
-            if(req.user){
+       //     if(req.user){
 
-                    let questions = await Question.find();
+                    let questions = await Question.find({})
+                    .populate('user')
+                    .populate('answer')
+                     .populate({ path: 'answer', populate: 'user'})
+                     .sort({createdAt:-1}) ;
+
+
+            //        console.log(questions)
 
                     let question = questions.map((ques)=>ques.content)
 
@@ -17,12 +24,12 @@ module.exports.display = async function(req, res){
                     })
 
 
-            }
-            else{
+      //      }
+     //       else{
                       return res.status(422).json({
                           message:'Unauthorized'
                       })
-            }
+     //       }
 
     }   
     catch(err){
