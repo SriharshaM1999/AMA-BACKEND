@@ -1,5 +1,5 @@
 const Question = require("../../../../model/question");
-const Tag = require("../../../../model/tags");
+var Tag = require("../../../../model/Tags");
 const User = require("../../../../model/Users");
 const Answer = require("../../../../model/answers");
 

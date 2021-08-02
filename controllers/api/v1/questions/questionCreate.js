@@ -1,5 +1,5 @@
 const Question = require("../../../../model/question");
-const Tag = require("../../../../model/tags");
+var Tag = require("../../../../model/Tags");
 const UserData = require("../../../../model/Users")
 
 module.exports.createQuestion= async function(req,res){
