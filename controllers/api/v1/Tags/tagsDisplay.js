@@ -1,11 +1,11 @@
-const Tag = require("../../../../model/tags");
+var Tags = require("../../../../model/Tags");
 
 
 module.exports.display =async function(req, res){
     
     console.log("I got called")
 
-    let tags = await Tag.find({});
+    let tags = await Tags.find({});
 
     // console.log("tags are:", tags);
 
