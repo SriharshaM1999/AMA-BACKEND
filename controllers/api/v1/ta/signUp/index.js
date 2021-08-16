@@ -1,28 +1,24 @@
-const User = require("../../../../model/Users");
-
-
-
-
+const User = require("../../../../../model/Ta/Ta")
 
 
 module.exports.signUp = async function(req, res){
 
 
-    console.log("req received is : ");
-    // console.log(req.body);
+    console.log("req received is : ------->");
+  // console.log(req);
 
     const email = req.body.email;
     const password=req.body.password;
-    const username=req.body.username
-
+    const username=req.body.name || "name";
  
 
     try{
+        console.log("ee got called")
 
         let users =  await User.findOne({email:email});
 
-        if(users){
-            console.log("user is present");
+        if(users!=null){
+            console.log("user is present",user);
             return res.status(200).json({
                 userPresent: true,
                 error:false,
@@ -37,24 +33,21 @@ module.exports.signUp = async function(req, res){
                 username: username,
                 email: email,
                 password: password,
-                noOfQuestions:0,
-                noOfAnswers:0
+                QuestionsAnswered:[],
+                QuestionsEscalated:[],
+                QuestionsSelected:[]
             },function(err){
             
                  if(err){
                      console.log(err);
                      return;
                  };
-                 return res.json(200,{
+                 return res.status(200).json({
                     userPresent: false,
                     error:false,
                     message:"Account Created "
                 })
             })
-
-
-
-
 
         }
 
@@ -69,11 +62,5 @@ module.exports.signUp = async function(req, res){
         })
     }
 
-
-
-
-
-
-
-
 }
+

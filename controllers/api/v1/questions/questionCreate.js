@@ -13,14 +13,15 @@ module.exports.createQuestion= async function(req,res){
 
 
 
-            const content = req.body.content
+            const content = req.body.content;
             const user = req.user._id;
-            const tagname = req.body.tagname
+            const tagname = req.body.tagname;
 
             const question  = await Question.create({
                 content:content,
                 user:user,
-                tagname: tagname
+                tagname: tagname,
+                status:0,
             })
 
             const User = await UserData.updateOne({_id:user},{$inc:{noOfQuestions:1}});

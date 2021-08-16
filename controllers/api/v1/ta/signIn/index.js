@@ -1,20 +1,20 @@
-const User = require("../../../../model/Users")
+const User = require("../../../../../model/Ta/Ta")
+
 
 const jwt = require("jsonwebtoken");
 
 
-module.exports.createSession= async function(req,res){
+module.exports.signIn= async function(req,res){
 
  try{
 
      const email=req.body.email;
      const password=req.body.password;
 
-    // console.log(req.body);
 
     let user = await User.findOne({email:email});
  
-    if(!user || user.password!= password){
+    if(!user || user.password!= password){ 
         return res.json(422,{
             message:"Invalid user name or password"
         })
@@ -36,7 +36,7 @@ module.exports.createSession= async function(req,res){
  catch(err){
      console.log(err);
      return res.json(500,{
-        message:"Internal Server Erroor"
+        message:"Internal Server Error"
     })
  }
 

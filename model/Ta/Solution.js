@@ -1,15 +1,15 @@
 const mongoose = require('mongoose');
 
-const answerSchema = mongoose.Schema({
+const solutionSchema = new mongoose.Schema({
 
     content:{
         type: String,
         required: true
     },
 
-    user:{
+    ta:{
         type:mongoose.Schema.Types.ObjectId,
-        ref:'User',
+        ref:'Ta',
         required: true
     },
 
@@ -18,11 +18,13 @@ const answerSchema = mongoose.Schema({
         ref:'Question',
         required:true,
     },
+
+   
     
 },{
     timestamps:true
 });
 
-const Answer = mongoose.model('Answer',answerSchema);
+const Solution = mongoose.model('Solution',solutionSchema);
 
-module.exports = Answer;
+module.exports = Solution;

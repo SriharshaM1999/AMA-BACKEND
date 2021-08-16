@@ -16,7 +16,7 @@ module.exports.deleteAnswer = async function(req, res){
             const answer = await Answer.findById(answerId);
 
 
-            console.log("In answer delete ", user, postId, answerId, answer);
+            // console.log("In answer delete ", user, postId, answerId, answer);
 
          
 

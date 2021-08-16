@@ -3,14 +3,18 @@ const Question = require("../../../../model/question");
 
 module.exports.display = async function(req, res){
 
+  //  console.log("display ", req)
+
     try{
 
        //     if(req.user){
 
-                    let questions = await Question.find({})
+                    let questions = await Question.find()
                     .populate('user')
                     .populate('answer')
                      .populate({ path: 'answer', populate: 'user'})
+                     .populate('solution')
+                     .populate({path:'solution', populate:'ta'})
                      .sort({createdAt:-1}) ;
 
 

@@ -5,8 +5,8 @@ const AnswerDelete = require("../../../controllers/api/v1/answer/answerDelete")
 
 const Router = express.Router();
 
-Router.post('/create-answer',passport.authenticate('jwt',{session:false}), AnswerCreate.createAnswer)
-Router.post('/delete-answer',passport.authenticate('jwt',{session:false}), AnswerDelete.deleteAnswer)
+Router.post('/create-answer',passport.authenticate('user-rule',{session:false}), AnswerCreate.createAnswer)
+Router.post('/delete-answer',passport.authenticate('user-rule',{session:false}), AnswerDelete.deleteAnswer)
 
 
 module.exports = Router;

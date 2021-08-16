@@ -7,6 +7,11 @@ const QuestionSchema = mongoose.Schema({
         required: true
     },
 
+    solution:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'Solution',
+    },
+
     user:{
         type:mongoose.Schema.Types.ObjectId,
         ref:'User',
@@ -16,6 +21,11 @@ const QuestionSchema = mongoose.Schema({
     tagname:{
         type:String,
         required:true,
+    },
+
+    status:{
+        type:Number,
+        required:true
     },
 
     answer:[
