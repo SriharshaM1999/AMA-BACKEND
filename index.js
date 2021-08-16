@@ -15,6 +15,7 @@ const port = process.env.PORT || 8000;
 
 const app = express();
 
+//console.log("I got called");
 
 // app.set('view engine', 'ejs');
 // app.set("views", path.join(__dirname, 'views'));
